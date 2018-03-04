@@ -20,6 +20,8 @@ public class MainController implements EventHandler {
 	
 	@Override
 	public void handle(Event event) {		
+		// Launch directory chooser to request user to select their library
+		//   (library is a folder on their computer containing ebook files)
 		DirectoryChooser dirChooser = new DirectoryChooser();
 		File dir = dirChooser.showDialog(null);
 		
@@ -28,7 +30,7 @@ public class MainController implements EventHandler {
 		else
 			System.out.println("user chose to cancel operation");
 		
-		// redirect user to next scene
+		// Redirect user to next scene, to display the listing of books in their library
 		try {
 			// Load the FXML document (we created with SceneBuilder)
 			FXMLLoader loader = new FXMLLoader();
@@ -43,6 +45,8 @@ public class MainController implements EventHandler {
 		}catch( IOException e ) {
 			e.printStackTrace();
 		}
+		
+		// TODO: Update Library.fxml to display the user's listing of books
 	}
 
 }
