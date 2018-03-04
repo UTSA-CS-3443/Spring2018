@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.controller.MainController">
+   <children>
+      <BorderPane prefHeight="600.0" prefWidth="400.0">
+         <top>
+            <Label prefHeight="142.0" prefWidth="302.0" text="Welcome to your library!" textAlignment="CENTER" textFill="#1e2586" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </top>
+         <center>
+            <Button fx:id="chooseLocation" mnemonicParsing="false" onAction="#handle" prefHeight="118.0" prefWidth="230.0" text="Choose the location of your library" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
