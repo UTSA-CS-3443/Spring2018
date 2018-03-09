@@ -1,19 +1,35 @@
 package application.model;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
 	
+	private String libraryPath;
 	private ArrayList<EBook> books;
 	
-	public Library() {
+	public Library( String fullPath ) {
 		this.books = new ArrayList<EBook>();
+		this.libraryPath = fullPath;
+		
+		loadBookInformation();
+	}
+	
+	public void loadBookInformation() {
+		File dir = new File( this.libraryPath );
+		File[] books = dir.listFiles();
+		
+		for( File book : books ) {
+			if( book.isFile() )
+				addBook( EBook.loadBook( book ) );
+		}
 	}
 	
 	
 	public void addBook( EBook book ) {
-		this.books.add( book );
+		if( book!=null )
+			this.books.add( book );
 	}
 
 	/**
@@ -28,5 +44,10 @@ public class Library {
 	 */
 	public void setBooks(ArrayList<EBook> books) {
 		this.books = books;
+	}
+	
+	
+	public static void main( String[] args ) {
+		Library lib = new Library( "" );
 	}
 }
