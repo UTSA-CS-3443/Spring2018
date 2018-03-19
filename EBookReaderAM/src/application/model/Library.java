@@ -13,7 +13,8 @@ public class Library {
 		this.books = new ArrayList<EBook>();
 		this.libraryPath = fullPath;
 		
-		loadBookInformation();
+		if( fullPath!=null )
+			loadBookInformation();
 	}
 	
 	public void loadBookInformation() {
