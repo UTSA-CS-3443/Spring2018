@@ -23,6 +23,9 @@ public class MainController implements EventHandler {
 	@FXML
 	Button chooseLocation;														// the "choose directory" button on the UI
 
+	@FXML
+	ListView listView;
+	
 	public static Library libraryModel;											// the model (data!) for this application
 	
 	// Create a GUI listing of the books to show the user (will be populated by the model)
