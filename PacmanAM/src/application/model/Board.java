@@ -15,9 +15,12 @@ public class Board {
 	private int currentRow;
 	private int currentCol;
 
-	public Board( int rows, int cols ) {
+	public Board( int rows, int cols, int level ) {
 		this.numRows = rows;
 		this.numCols = cols;
+		this.level = level;
+		
+		this.board = new char[rows][cols];
 	}
 	
 	// Method to read in the data from level files & create a Board object
@@ -37,7 +40,8 @@ public class Board {
 			int numberOfRows = eachRow.size();
 			int numberOfCols = eachRow.get(0).length();
 			
-			b = new Board( numberOfRows, numberOfCols );
+			//TODO: Fix the level number to dynamically read from the file name
+			b = new Board( numberOfRows, numberOfCols, 1 );
 			// copy the file contents to the board model object
 			for( int r=0; r<numberOfRows; r++ ) {
 				for( int c=0; c<numberOfCols; c++ ) {
@@ -65,4 +69,16 @@ public class Board {
 		this.currentRow = r;
 	}
 	
+	
+	public int getRows() {
+		return this.numRows;
+	}
+	
+	public int getCols() {
+		return this.numCols;
+	}
+	
+	public char getBoardLocation( int row, int col ) {
+		return this.board[row][col];
+	}
 }
