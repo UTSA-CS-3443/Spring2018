@@ -2,6 +2,7 @@ package application;
 	
 import java.io.File;
 
+import application.controller.MainController;
 import application.model.Board;
 import application.view.BoardView;
 import javafx.application.Application;
@@ -49,6 +50,7 @@ public class Main extends Application {
 			view = new BoardView( model );
 			layout.getChildren().add( view );
 			Scene scene = new Scene( layout );
+			scene.setOnKeyPressed( new MainController() );
 			
 			// Sets the scene to the stage & shows stage to user
 			primaryStage.setScene(scene);
