@@ -28,6 +28,11 @@ public class BoardView extends GridPane{
 		}
 	}
 	
+	public void update( int currentRow, int currentCol, int previousRow, int previousCol ) {
+		this.add( chooseImage('p'), currentCol, currentRow );
+		this.add( chooseImage('-'), previousCol, previousRow );
+	}
+	
 	
 	public ImageView chooseImage(char letter) {
 		switch( letter ) {

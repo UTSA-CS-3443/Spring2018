@@ -1,5 +1,7 @@
 package application;
 	
+import java.io.File;
+
 import application.model.Board;
 import application.view.BoardView;
 import javafx.application.Application;
@@ -7,6 +9,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 
 /*******************************************************************
  * PACMAN
@@ -32,6 +37,11 @@ public class Main extends Application {
 			loader.setLocation( Main.class.getResource("../Main.fxml") );
 			AnchorPane layout = (AnchorPane) loader.load();
 							
+			Media media = new Media( new File("pacman-theme.wav").toURI().toString() );
+			MediaPlayer player = new MediaPlayer( media );
+			MediaView mediaView = new MediaView( player );
+			layout.getChildren().add( mediaView );
+			
 			// Load the Board model 
 			model = Board.loadFromFile("level1.txt");
 			
@@ -40,11 +50,11 @@ public class Main extends Application {
 			layout.getChildren().add( view );
 			Scene scene = new Scene( layout );
 			
-			// TODO: connect the controller!
-			
 			// Sets the scene to the stage & shows stage to user
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			player.play();
 			
 		} catch(Exception e) {
 			e.printStackTrace(); // TODO: handle this better!

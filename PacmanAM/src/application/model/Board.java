@@ -14,6 +14,8 @@ public class Board {
 	
 	private int currentRow;
 	private int currentCol;
+	private int previousRow;
+	private int previousCol;
 
 	public Board( int rows, int cols, int level ) {
 		this.numRows = rows;
@@ -64,9 +66,61 @@ public class Board {
 		return b;
 	}
 	
+	public void move( char letter ) {
+		switch( letter ) {
+			case 'U': moveUp();
+			case 'D': moveDown();
+			case 'L': moveLeft();
+			case 'R': moveRight();
+		}
+	}
+	
+	public void moveUp() {
+		// check if the row above is a wall
+		if( this.board[this.currentRow-1][this.currentCol]!='w' )
+			this.updateCurrentLocation( this.currentRow-1, this.currentCol );
+	}
+	
+	public void moveDown() {
+		// check if the row below is a wall
+		if( this.board[this.currentRow+1][this.currentCol]!='w' )
+			this.updateCurrentLocation( this.currentRow+1, this.currentCol );
+	}
+	
+	public void moveRight() {
+		// check if the col to right is a wall
+		if( this.board[this.currentRow][this.currentCol+1]!='w' )
+			this.updateCurrentLocation( this.currentRow, this.currentCol+1 );
+	}
+	
+	public void moveLeft() {
+		// check if the col to left is a wall
+		if( this.board[this.currentRow][this.currentCol-1]!='w' )
+			this.updateCurrentLocation( this.currentRow, this.currentCol-1 );
+	}
+	
 	public void updateCurrentLocation(int r, int c) {
+		this.previousCol = this.currentCol;
+		this.previousRow = this.currentRow;
+		
 		this.currentCol = c;
 		this.currentRow = r;
+	}
+	
+	public int getPreviousRow() {
+		return this.previousRow;
+	}
+	
+	public int getPreviousColumn() {
+		return this.previousCol;
+	}
+	
+	public int getCurrentRow() {
+		return this.currentRow;
+	}
+	
+	public int getCurrentColumn() {
+		return this.currentCol;
 	}
 	
 	
